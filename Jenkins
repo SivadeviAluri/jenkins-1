@@ -1,0 +1,20 @@
+pipeline{
+    agent any
+    stages{
+        stage('Build'){
+            steps{
+                  echo "displaying ip where this stage got executed"
+                  sh "hostname -i"
+            }
+        }
+        stage('otherbuild'){
+             agent{
+                label 'label'
+             }
+             steps{
+                echo "displayin ip where this stage got executed"
+                sh "hostname -i"
+             }
+        }
+    }
+}
